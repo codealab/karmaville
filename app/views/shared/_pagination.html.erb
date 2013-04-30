@@ -1,0 +1,16 @@
+<div class="pagination">
+  <ul>
+    <li><%= link_to "Prev", root_path(page: page-1) unless page == 1 %></li>
+
+    <% unless page >= 6 %>
+        <% 1.upto(10) do |page_no| %>
+            <li <%="class=active" if page == page_no%> ><%= link_to page_no, root_path(page: page_no) %></li>
+        <% end %>
+    <% else %>
+        <% (page - 5).upto(page + 4) do |page_no| %>
+            <li <%="class=active" if page == page_no%> ><%= link_to page_no, root_path(page: page_no) %></li>
+        <% end %>
+    <% end %>
+    <li><%= link_to "Next", root_path(page: page+1) %></li>
+</ul>
+</div>
